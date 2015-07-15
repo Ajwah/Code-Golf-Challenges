@@ -1,5 +1,7 @@
 function processData(input) {
+  var result;
 
+  process.stdout.write(""+result+"\n");
 }
 
 process.stdin.resume();
@@ -12,5 +14,4 @@ process.stdin.on("data", function (input) {
 
 process.stdin.on("end", function () {
    var r = processData(_input);
-   process.stdout.write(""+r+"\n");
 });
