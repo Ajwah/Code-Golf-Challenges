@@ -4,14 +4,25 @@ function processData(input) {
   process.stdout.write(""+result+"\n");
 }
 
+function assert (i,res,expect) {
+  if (res !== expect){
+    console.log(i,"[FAIL] Expected:", expect, ' Result: ', res);
+  }
+}
+
 process.stdin.resume();
 process.stdin.setEncoding("ascii");
-_input = "";
+_input = [
+            ["",'']
+          ];
 
 process.stdin.on("data", function (input) {
     _input += input;
 });
 
 process.stdin.on("end", function () {
-   var r = processData(_input);
+   var r;
+   for (var i = 0; i < _input.length; i++){
+     assert(i,processData(_input[i][0]), _input[i][1]);
+   }
 });
