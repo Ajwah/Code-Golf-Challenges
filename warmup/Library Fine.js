@@ -19,8 +19,7 @@ function processData(input) {
       } else {
         result = 0;
       }
-      // console.log(ret,due,ys,ms,ds);
-  // process.stdout.write(""+result+"\n");
+  process.stdout.write(""+result+"\n");
   return result
 }
 
