@@ -34,6 +34,45 @@ function processData(input) {
   return result;
 }
 
+function processData2(input){
+  var result = '',
+      alpha = 'abcdefghijklmnopqrstuvwxyz',
+      beta = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      i_array = input.split('\n'),
+      str = i_array[1],
+      rot = parseInt(i_array[2]),
+      max = rot%26,
+      rotatedA = alpha,
+      rotatedB = beta,
+      first, last, index;
+
+  for (var i = 0; i<max;i++){
+    first = rotatedA[0];
+    last = rotatedA[alpha.length-1]
+    rotatedA = rotatedA.slice(1,-1) + last + first;
+
+    first = rotatedB[0];
+    last = rotatedB[alpha.length-1]
+    rotatedB = rotatedB.slice(1,-1) + last + first;
+  }
+  // console.log(rotated, )
+  for (i = 0; i<str.length;i++){
+    index = alpha.indexOf(str[i]);
+    if (index != -1) {
+      result += rotatedA[index];
+    } else {
+      index = beta.indexOf(str[i]);
+      if (index != -1) {
+        result += rotatedB[index];
+      } else {
+        result += str[i];
+      }
+    }
+  }
+  // process.stdout.write(""+result+"\n");
+  return result;
+}
+
 function assert (i,res,expect) {
   if (res !== expect){
     console.log(i,"[FAIL] Expected:", expect, ' Result: ', res);
@@ -162,6 +201,6 @@ process.stdin.on("data", function (input) {
 process.stdin.on("end", function () {
    var r;
    for (var i = 0; i < _input.length; i++){
-     assert(_input[i],processData(_input[i][0]), _input[i][1]);
+     assert(_input[i],processData2(_input[i][0]), _input[i][1]);
    }
 });
