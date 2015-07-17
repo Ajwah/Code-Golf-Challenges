@@ -55,7 +55,7 @@ function processData2(input){
     last = rotatedB[alpha.length-1]
     rotatedB = rotatedB.slice(1,-1) + last + first;
   }
-  // console.log(rotated, )
+
   for (i = 0; i<str.length;i++){
     index = alpha.indexOf(str[i]);
     if (index != -1) {
